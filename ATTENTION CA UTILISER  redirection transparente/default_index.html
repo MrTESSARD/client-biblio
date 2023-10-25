@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+<body>
+
+    <h1>Test Page</h1>
+    
+    <p>Ceci est une page de test pour vérifier la connectivité avec votre serveur.</p>
+
+    <button onclick="testServerConnection()">Tester la connexion au serveur</button>
+
+    <script>
+        function testServerConnection() {
+            // Remplacez l'URL par l'URL de votre serveur
+            const serverURL = 'http://votre-serveur.com:4002/graphqlclick/';
+
+            // Exemple de requête simple avec fetch
+            fetch(serverURL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erreur HTTP! Statut : ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Réponse du serveur :', data);
+                    alert('La connexion au serveur a réussi!');
+                })
+                .catch(error => {
+                    console.error('Erreur de connexion au serveur :', error);
+                    alert('Échec de la connexion au serveur. Vérifiez la console pour plus d\'informations.');
+                });
+        }
+    </script>
+
+</body>
+</html>
